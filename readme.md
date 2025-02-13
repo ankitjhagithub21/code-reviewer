@@ -20,17 +20,17 @@ AI Code Reviewer is a web application that uses Google Gemini 2.0 Flash to analy
 1. Clone the repository:
    ```bash
    git clone https://github.com/ankitjhagithub21/code-reviewer.git
-   cd ai-code-reviewer
+   cd code-reviewer
    ```
 
 2. Install dependencies:
    ```bash
    # Install client dependencies
-   cd client
+   cd frontend
    npm install
 
    # Install server dependencies
-   cd ../server
+   cd ../backend
    npm install
    ```
 
@@ -53,12 +53,12 @@ AI Code Reviewer is a web application that uses Google Gemini 2.0 Flash to analy
    npm start
    ```
 
-The app will be accessible at `http://localhost:3000`.
+The app will be accessible at `http://localhost:5173`.
 
 ## 🧪 Usage
 
 1. Enter your code into the provided text area.
-2. Click the "Review Code" button.
+2. Click the "Review" button.
 3. View AI-generated feedback and suggestions.
 
 ## ⚠️ Limitations
