@@ -9,7 +9,7 @@ import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 
 const App = () => {
-
+  const [loading,setLoading] = useState(false)
   const [code, setCode] = useState(` function sum(){
       return a+b
   }
@@ -22,8 +22,11 @@ const App = () => {
   }, [])
 
   async function reviewCode(){
+    if(loading) return;
+    setLoading(true)
      const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}`,{prompt:code});
      setReview(res.data)
+     setLoading(false)
   }
 
   return (
@@ -39,13 +42,17 @@ const App = () => {
             />
           </div>
           <div className="review" onClick={reviewCode}>
-            Review
+           {
+            loading ? 'Loading...' :  'Review'
+           }
           </div>
         </div>
         <div className="right">
-          <Markdown  rehypePlugins={[ rehypeHighlight ]}>
+         {
+          loading ? 'Waiting for response....' :  <Markdown  rehypePlugins={[ rehypeHighlight ]}>
           {review}
           </Markdown>
+         }
         </div>
       </main>
     </>
